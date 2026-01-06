@@ -8,7 +8,7 @@ export default function Testing({ steps }) {
     const currentStep = steps[index];
 
     if (currentStep.timer && currentStep.timer > 0) {
-      setTimeLeft(currentStep.timer);
+      setTimeLeft(currentStep.timer * 60);
     } else {
       setTimeLeft(null); // no timer for this step
     }
@@ -40,11 +40,11 @@ export default function Testing({ steps }) {
   return (
     <div className="slideshow">
       <h2>Step {index + 1} of {steps.length}</h2>
-      <p>{steps[index].text}</p>
+      <p>{steps[index].instruction}</p>
 
       {timeLeft !== null && (
         <div className="timer">
-          Time left: {timeLeft}s
+          Time left: {Math.floor(timeLeft/60)} min {timeLeft%60} s
         </div>
       )}
 

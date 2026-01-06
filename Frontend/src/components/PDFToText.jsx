@@ -4,7 +4,7 @@ import * as pdfjsLib from "pdfjs-dist";
 // Assuming you copied the worker file to your public folder
 pdfjsLib.GlobalWorkerOptions.workerSrc = window.location.origin + "/pdf.worker.min.mjs";
 
-export default function PDFUploader({ onTextExtracted }) {
+export default function PDFToText({ onTextExtracted }) {
   const [fileName, setFileName] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -44,7 +44,6 @@ export default function PDFUploader({ onTextExtracted }) {
     } catch (err) {
       setError("Failed to read PDF: " + err.message);
     }
-
     setLoading(false);
   };
 
